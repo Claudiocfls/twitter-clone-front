@@ -1,5 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { AiOutlineHeart } from 'react-icons/ai';
+import { FaRegCommentAlt } from 'react-icons/fa';
+import { AiOutlineRetweet } from 'react-icons/ai';
 
 const useStyles = makeStyles({
   tweet: {
@@ -12,6 +15,7 @@ const useStyles = makeStyles({
       backgroundColor: 'rgb(245, 248, 250)',
     },
     paddingTop: '12px',
+    paddingBottom: '8px',
   },
   header: {
     '& h3':{
@@ -74,10 +78,9 @@ const Tweet = ({ author, content }) => {
           <p>{content || 'content'}</p>
         </div>
         <div className={classes.bottom}>
-          <button>t</button>
-          <button>t</button>
-          <button>t</button>
-          <button>t</button>
+          <FaRegCommentAlt size={16} color={"rgb(101, 119, 134)"} />
+          <AiOutlineRetweet size={20} color={"rgb(101, 119, 134)"} />
+          <AiOutlineHeart size={20} color={"rgb(101, 119, 134)"} />
         </div>
       </div>
     </li>
