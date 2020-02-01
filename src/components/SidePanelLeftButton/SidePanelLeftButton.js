@@ -1,5 +1,23 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import classnames from 'classnames';
+import { FaTwitter } from 'react-icons/fa';
+import { TiHome } from 'react-icons/ti';
+import { FiHash } from 'react-icons/fi';
+import { IoMdNotificationsOutline } from 'react-icons/io';
+import { FiBookmark } from 'react-icons/fi';
+import { FaRegListAlt } from 'react-icons/fa';
+import { FaRegUserCircle } from 'react-icons/fa';
+
+const iconsList = {
+  twitter: <FaTwitter size={28} />,
+  home: <TiHome size={30} />,
+  hashtag: <FiHash size={30} />,
+  notifications: <IoMdNotificationsOutline size={30} />,
+  bookmarks: <FiBookmark size={30}/>,
+  lists: <FaRegListAlt size={26} />,
+  profile: <FaRegUserCircle size={26} />,
+};
 
 const useStyles = makeStyles({
   button: {
@@ -11,6 +29,7 @@ const useStyles = makeStyles({
     marginTop: '6px',
     '& h4': {
       margin: 0,
+      marginLeft: '16px',
     },
     backgroundColor: '#FFF',
     '&:hover': {
@@ -32,9 +51,11 @@ const SidePanelLeftButton = (props) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.button}>
-      <h4>img</h4>
-      <h4>nome do botao</h4>
+    <div className={classnames(classes.button,{
+      [classes.active]: active,
+    })}>
+      {iconsList[icon]}
+      {title && <h4>{title}</h4>}
     </div>
   );
 };

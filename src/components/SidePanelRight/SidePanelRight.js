@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import SidePanelLeftButton from './../SidePanelLeftButton';
 import Trends from './../Trends/Trends';
 
 const useStyles = makeStyles({
