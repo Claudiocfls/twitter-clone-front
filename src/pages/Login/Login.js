@@ -10,7 +10,6 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
-    border: '1px solid #000',
   },
   form: {
     margin: '20px 0 0',
@@ -46,15 +45,16 @@ const useStyles = makeStyles({
   },
 });
 
-const Login = () => {
+const Login = (props) => {
   const classes = useStyles();
   const [nameFieldValue, setNameFieldValue] = useState('');
   const [passFieldValue, setPassFieldValue] = useState('');
 
+  console.log(props);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (nameFieldValue === passFieldValue) console.log("logado");
-    else console.log("senha ou usuario incorreto");
+    localStorage.setItem('twitter-clone@username', nameFieldValue);
   }
 
   const handleNameChange = ({ target: { value }}) => {
