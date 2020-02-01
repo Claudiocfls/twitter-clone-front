@@ -4,8 +4,9 @@ import SidePanelLeftButton from './../SidePanelLeftButton';
 
 const useStyles = makeStyles({
   container: {
-    display: 'grid',
-    gridTemplateColumns: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
   },
 });
 

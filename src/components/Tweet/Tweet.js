@@ -17,8 +17,18 @@ const useStyles = makeStyles({
     '& h3':{
       margin: 0,
     },
+    '& h4': {
+      margin: 0,
+      color: 'rgb(101, 119, 134)',
+      fontSize: '15px',
+      fontWeight: 400,
+    },
     display: 'flex',
     flexDirection: 'row',
+    justifyContent: 'flex-start',
+    '& > *': {
+      marginRight: '8px',
+    },
   },
   content: {
     '& p': {
@@ -57,9 +67,8 @@ const Tweet = ({ author, content }) => {
       <div className={classes.tweetContent}>
         <div className={classes.header}>
           <h3>{author || 'nome'}</h3>
-          <h3>{"@claudio"}</h3>
-          <h3>{"2 h"}</h3>
-          <button>t</button>
+          <h4>{"@claudio"}</h4>
+          <h4>{" · 2 h"}</h4>
         </div>
         <div className={classes.content}>
           <p>{content || 'content'}</p>

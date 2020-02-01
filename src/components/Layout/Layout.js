@@ -2,6 +2,7 @@ import React from 'react';
 import Container from './../Container';
 import { makeStyles } from '@material-ui/core/styles';
 import SidePanelLeft from './../SidePanelLeft';
+import SidePanelRight from '../SidePanelRight/SidePanelRight';
 
 const useStyles = makeStyles({
   container: {
@@ -54,7 +55,9 @@ const Layout = (props) => {
       <div className={classes.leftPanel}>
         <SidePanelLeft />
       </div>
-      <div className={classes.rightPanel}></div>
+      <div className={classes.rightPanel}>
+        <SidePanelRight />
+      </div>
       <div className={classes.topHeader}>
         <h1>Home</h1>
       </div>
