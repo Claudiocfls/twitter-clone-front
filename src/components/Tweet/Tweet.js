@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     borderTop: 'none',
     listStyleType: 'none',
     display: 'grid',
-    gridTemplateColumns: '120px auto',
+    gridTemplateColumns: '80px auto',
     '&:hover': {
       backgroundColor: 'rgb(245, 248, 250)',
     },
@@ -39,8 +39,8 @@ const useStyles = makeStyles({
     justifyContent: 'center',
   },
   pictureShape: {
-    height: '70px',
-    width: '70px',
+    height: '50px',
+    width: '50px',
     borderRadius: '50%',
     backgroundColor: 'rgb(230, 236, 240)',
   },
@@ -52,7 +52,7 @@ const Tweet = ({ author, content }) => {
   return (
     <li className={classes.tweet}>
       <div className={classes.picture}>
-        <div className={classes.pictureShape}></div>
+        <div className={classes.pictureShape} />
       </div>
       <div className={classes.tweetContent}>
         <div className={classes.header}>

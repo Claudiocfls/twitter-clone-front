@@ -24,12 +24,19 @@ const useStyles = makeStyles({
   topHeader: {
     border: '1px solid rgb(230, 236, 240)',
     backgroundColor: '#FFF',
-    height: '50px',
-    width: 'calc(100% - 600px - 270px - 380px - 2px)',
+    height: '54px',
+    width: 'calc(100vw - 600px - 270px - 380px - 41px)',
     position: 'fixed',
     left: '570px',
     top: 0,
     zIndex: 2,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '0 12px',
+    '& h1': {
+      fontSize: '18px',
+    },
   },
   pageContent: {
     paddingTop: '36px',
@@ -48,7 +55,9 @@ const Layout = (props) => {
         <SidePanelLeft />
       </div>
       <div className={classes.rightPanel}></div>
-      <div className={classes.topHeader}></div>
+      <div className={classes.topHeader}>
+        <h1>Home</h1>
+      </div>
       <div className={classes.pageContent}>
         {props.children}
       </div>
