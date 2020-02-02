@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     border: '1px solid rgb(230, 236, 240)',
     backgroundColor: '#FFF',
     height: '54px',
-    width: 'calc(100vw - 600px - 270px - 380px - 41px)',
+    width: 'calc(100vw - 600px - 270px - 380px - 26px)',
     position: 'fixed',
     left: '570px',
     top: 0,

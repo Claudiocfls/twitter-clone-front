@@ -33,6 +33,12 @@ const useStyles = makeStyles({
       color: 'rgb(23, 191, 99)',
     },
   },
+  buttonLabel: {
+    position: 'absolute',
+    left: '40px',
+    top: '8px',
+    color: 'rgb(101, 119, 134)',
+  },
 });
 
 const variants = {
@@ -44,19 +50,27 @@ const variants = {
 const TweetButton = (props) => {
   const {
     variant,
+    handleClick,
+    number,
   } = props;
   const classes = useStyles();
 
   const IconVariant = variants[variant];
 
   return (
-    <div className={classnames(classes.buttonWrapper,{
-      [classes.heartButton]: variant === 'heart',
-      [classes.commentButton]: variant === 'comment',
-      [classes.retweetButton]: variant === 'retweet',
-    })}>
-      {IconVariant}
-    </div>
+    <span style={{position: 'relative'}}>
+      <div
+        className={classnames(classes.buttonWrapper,{
+          [classes.heartButton]: variant === 'heart',
+          [classes.commentButton]: variant === 'comment',
+          [classes.retweetButton]: variant === 'retweet',
+        })}
+        onClick={handleClick}
+      >
+        {IconVariant}
+      </div>
+      {number > 0 && (<span className={classes.buttonLabel}>{number}</span>)}
+    </span>
   );
 };
 

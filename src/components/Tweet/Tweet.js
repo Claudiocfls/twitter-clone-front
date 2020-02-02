@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TweetButton from './../TweetButton/TweetButton';
+import api from './../../services/api';
+import moment from 'moment';
 
 const useStyles = makeStyles({
   tweet: {
@@ -58,8 +60,19 @@ const useStyles = makeStyles({
   },
 });
 
-const Tweet = ({ author, content }) => {
+const Tweet = ({ author, content, tweetId, likes, createdAt }) => {
+  const [numberOfLikes, setNumberOfLikes] = useState(likes);
   const classes = useStyles();
+
+  const periodSinceCreation = moment(createdAt).fromNow();
+
+  const handleClick = async () => {
+    setNumberOfLikes(numberOfLikes + 1);
+    const response = await api.post('/like', {
+      id: tweetId,
+    });
+  };
+
 
   return (
     <li className={classes.tweet}>
@@ -70,7 +83,7 @@ const Tweet = ({ author, content }) => {
         <div className={classes.header}>
           <h3>{author || 'nome'}</h3>
           <h4>{"@claudio"}</h4>
-          <h4>{" · 2 h"}</h4>
+          <h4>{` · ${periodSinceCreation}`}</h4>
         </div>
         <div className={classes.content}>
           <p>{content || 'content'}</p>
@@ -78,7 +91,7 @@ const Tweet = ({ author, content }) => {
         <div className={classes.bottom}>
           <TweetButton variant="comment" />
           <TweetButton variant="retweet" />
-          <TweetButton variant="heart" />
+          <TweetButton handleClick={handleClick} variant="heart" number={numberOfLikes} />
         </div>
       </div>
     </li>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '../Button/Button';
+import api from './../../services/api';
 
 const useStyles = makeStyles({
   container: {
@@ -50,9 +51,16 @@ const TweetTextArea = () => {
     setDisabled(value.length === 0);
   }
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (disabled) return;
-    
+
+    const { data: newTweet } = await api.post('/tweets', {
+      author: 'Eunofront',
+      content: tweet,
+    });
+
+    console.log(newTweet);
+
     setTweet('');
     setDisabled(true);
   };
