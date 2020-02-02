@@ -7,6 +7,7 @@ const Home = () => {
   return (
     <Layout>
       <TweetTextArea />
+      <hr style={{border: '8px solid #e6ecf0', margin: 0,}} />
       <TweetList />
     </Layout>
   );

@@ -68,6 +68,7 @@ const mockTweets = [
 const useStyles = makeStyles({
   list: {
     padding: '0px',
+    margin: 0,
   },
 });
 

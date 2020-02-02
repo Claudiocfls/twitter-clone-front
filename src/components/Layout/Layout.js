@@ -40,7 +40,7 @@ const useStyles = makeStyles({
     },
   },
   pageContent: {
-    paddingTop: '58px',
+    paddingTop: '55px',
     position: 'absolute',
     left: '570px',
     width: 'calc(100% - 600px - 270px - 380px)',
