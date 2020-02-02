@@ -1,8 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { AiOutlineHeart } from 'react-icons/ai';
-import { FaRegCommentAlt } from 'react-icons/fa';
-import { AiOutlineRetweet } from 'react-icons/ai';
+import TweetButton from './../TweetButton/TweetButton';
 
 const useStyles = makeStyles({
   tweet: {
@@ -78,9 +76,9 @@ const Tweet = ({ author, content }) => {
           <p>{content || 'content'}</p>
         </div>
         <div className={classes.bottom}>
-          <FaRegCommentAlt size={16} color={"rgb(101, 119, 134)"} />
-          <AiOutlineRetweet size={20} color={"rgb(101, 119, 134)"} />
-          <AiOutlineHeart size={20} color={"rgb(101, 119, 134)"} />
+          <TweetButton variant="comment" />
+          <TweetButton variant="retweet" />
+          <TweetButton variant="heart" />
         </div>
       </div>
     </li>
