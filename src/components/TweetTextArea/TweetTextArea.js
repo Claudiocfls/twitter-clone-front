@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '../Button/Button';
 
 const useStyles = makeStyles({
   container: {
     display: 'grid',
     gridTemplateColumns: '76px auto',
-    gridTemplateRows: 'auto 45px',
+    gridTemplateRows: 'auto 50px',
     minHeight: '118px',
     width: 'calc(100% - 2px)',
     border: '1px solid rgb(230, 236, 240)',
@@ -35,20 +36,46 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center',
+    padding: '12px',
   },
 });
 
 const TweetTextArea = () => {
   const classes = useStyles();
+  const [tweet, setTweet] = useState('');
+  const [disabled, setDisabled] = useState(true);
+
+  const handleChange = ({ target: { value }}) => {
+    setTweet(value);
+    setDisabled(value.length === 0);
+  }
+
+  const handleClick = () => {
+    if (disabled) return;
+    
+    setTweet('');
+    setDisabled(true);
+  };
 
   return (
     <div className={classes.container}>
       <div className={classes.imageWrapper}>
         <div className={classes.image}></div>
       </div>
-      <textarea className={classes.textArea} placeholder={"What's happening?"}/>
+      <textarea
+        className={classes.textArea}
+        placeholder={"What's happening?"}
+        onChange={handleChange}
+        value={tweet}
+      />
       <div/>
-      <div className={classes.buttonWrapper}>enviar</div>
+      <div className={classes.buttonWrapper}>
+        <Button
+          title={'Tweet'}
+          handleClick={handleClick}
+          disabled={disabled}
+        />
+      </div>
     </div>
   );
 };
