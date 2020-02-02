@@ -8,14 +8,12 @@ const Home = () => {
   const [tweets, setTweets] = useState([]);
 
   useEffect(() => {
-    if (tweets.length === 0) {
-      async function fetchData() {
-        const { data } = await api.get('/tweets');
-        setTweets(data);
-      }
-      fetchData();
+    async function fetchData() {
+      const { data } = await api.get('/tweets');
+      setTweets(data);
     }
-  }, [tweets]);
+    fetchData();
+  }, []);
 
   return (
     <Layout>

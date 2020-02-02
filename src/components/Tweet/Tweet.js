@@ -68,9 +68,12 @@ const Tweet = ({ author, content, tweetId, likes, createdAt }) => {
 
   const handleClick = async () => {
     setNumberOfLikes(numberOfLikes + 1);
-    const response = await api.post('/like', {
+    const { data } = await api.post('/like', {
       id: tweetId,
     });
+    if (data.likes !== numberOfLikes) {
+      setNumberOfLikes(data.likes);
+    }
   };
 
 
@@ -82,7 +85,7 @@ const Tweet = ({ author, content, tweetId, likes, createdAt }) => {
       <div className={classes.tweetContent}>
         <div className={classes.header}>
           <h3>{author || 'nome'}</h3>
-          <h4>{"@claudio"}</h4>
+          <h4>{" @claudio"}</h4>
           <h4>{` · ${periodSinceCreation}`}</h4>
         </div>
         <div className={classes.content}>
