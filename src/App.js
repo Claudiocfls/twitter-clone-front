@@ -1,16 +1,18 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
+import history from './utils/history';
+import PrivateRoute from './HOC/PrivateRoute';
 
 import Login from './pages/Login'
 import Home from './pages/Home'
 
 const App = () => (
-  <BrowserRouter>
+  <Router history={history}>
     <Switch>
       <Route path="/" exact component={Login} />
-      <Route path="/home" component={Home} />
+      <PrivateRoute path="/home" component={Home} />
     </Switch>
-  </BrowserRouter>
+  </Router>
 );
 
 export default App;

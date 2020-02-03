@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from './../../components/Container';
+import NavBar from '../../components/NavBar';
+import { useAuth0 } from "./../../react-auth0-spa";
 
 const useStyles = makeStyles({
   container: {
@@ -50,8 +52,6 @@ const Login = (props) => {
   const [nameFieldValue, setNameFieldValue] = useState('');
   const [passFieldValue, setPassFieldValue] = useState('');
 
-  console.log(props);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     localStorage.setItem('twitter-clone@username', nameFieldValue);
@@ -66,25 +66,30 @@ const Login = (props) => {
   }
 
   return (
-    <Container classes={{ root: classes.container }}>
-      <form className={classes.form} onSubmit={handleSubmit}>
-        <input
-          value={nameFieldValue}
-          onChange={handleNameChange}
-          className={classes.input}
-          type="text"
-          placeholder="Nome de usuário"
-        />
-        <input
-          value={passFieldValue}
-          onChange={handlePassValue}
-          className={classes.input}
-          type="password"
-          placeholder="Senha"
-        />
-        <button type="submit" className={classes.button}>Entrar</button>
-      </form>
-    </Container>
+    <>
+      <header>
+        <NavBar />
+      </header>
+      <Container classes={{ root: classes.container }}>
+        <form className={classes.form} onSubmit={handleSubmit}>
+          <input
+            value={nameFieldValue}
+            onChange={handleNameChange}
+            className={classes.input}
+            type="text"
+            placeholder="Nome de usuário"
+          />
+          <input
+            value={passFieldValue}
+            onChange={handlePassValue}
+            className={classes.input}
+            type="password"
+            placeholder="Senha"
+          />
+          <button type="submit" className={classes.button}>Entrar</button>
+        </form>
+      </Container>
+    </>
   );
 }
 
