@@ -15,10 +15,12 @@ const TweetList = ({ tweets }) => {
   const [tweetsList, setTweetsList] = useState([]);
   const [subscribed, setSubscribed] = useState(false);
   const [newTweet, setNewTweet] = useState(undefined);
+  const [newLike, setNewLike] = useState(undefined);
 
   useEffect(() => {
     if (!subscribed){
       Socket.subscribeToNewTweets(addNewTweet);
+      Socket.subscribeToNewLikes(updateLikeCounter);
       setSubscribed(true);
     }
     setTweetsList(tweets);
@@ -29,10 +31,21 @@ const TweetList = ({ tweets }) => {
       setTweetsList([newTweet, ...tweetsList]);
       setNewTweet(undefined);
     };
+    if (newLike) {
+      const tempList = tweetsList;
+      const tweetIndex = tweetsList.findIndex(t => t._id === newLike._id);
+      tempList[tweetIndex].likes = newLike.likes;
+      setTweetsList(tempList);
+      setNewLike(undefined);
+    }
   });
 
   const addNewTweet = tweet => {
     setNewTweet(tweet);
+  }
+
+  const updateLikeCounter = tweet => {
+    setNewLike(tweet);
   }
 
   return (

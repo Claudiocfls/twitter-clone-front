@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TweetButton from './../TweetButton/TweetButton';
 import api from './../../services/api';
@@ -65,6 +65,10 @@ const Tweet = ({ author, content, tweetId, likes, createdAt }) => {
   const classes = useStyles();
 
   const periodSinceCreation = moment(createdAt).fromNow();
+
+  useEffect(() => {
+    setNumberOfLikes(likes);
+  }, [likes]);
 
   const handleClick = async () => {
     setNumberOfLikes(numberOfLikes + 1);
