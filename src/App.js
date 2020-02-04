@@ -9,7 +9,7 @@ import Home from './pages/Home'
 const App = () => (
   <Router history={history}>
     <Switch>
-      <Route path="/" exact component={Login} />
+      <PrivateRoute path="/" exact component={Login} />
       <PrivateRoute path="/home" component={Home} />
     </Switch>
   </Router>

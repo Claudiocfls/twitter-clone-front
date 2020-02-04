@@ -47,13 +47,16 @@ const useStyles = makeStyles({
 });
 
 const SidePanelLeftButton = (props) => {
-  const { icon, title, active } = props;
+  const { icon, title, active, handleClick } = props;
   const classes = useStyles();
 
   return (
-    <div className={classnames(classes.button,{
-      [classes.active]: active,
-    })}>
+    <div
+      className={classnames(classes.button,{
+        [classes.active]: active,
+      })}
+      onClick={handleClick}
+    >
       {iconsList[icon]}
       {title && <h4>{title}</h4>}
     </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import SidePanelLeftButton from './../SidePanelLeftButton';
+import { useAuth0 } from "../../react-auth0-spa";
 
 const useStyles = makeStyles({
   container: {
@@ -10,46 +11,69 @@ const useStyles = makeStyles({
   },
 });
 
-const buttons = [
-  {
-    icon: 'home',
-    title: 'Home',
-    active: true,
-  },
-  {
-    icon: 'hashtag',
-    title: 'Explore',
-    active: false,
-  },
-  {
-    icon: 'notifications',
-    title: 'Notifications',
-    active: false,
-  },
-  {
-    icon: 'bookmarks',
-    title: 'Bookmarks',
-    active: false,
-  },
-  {
-    icon: 'lists',
-    title: 'Lists',
-    active: false,
-  },
-  {
-    icon: 'profile',
-    title: 'Profile',
-    active: false,
-  },
-];
+const useButtons = () => {
+  const { logout } = useAuth0();
+  return [
+    {
+      icon: 'home',
+      title: 'Home',
+      active: true,
+      handleClick: undefined,
+    },
+    {
+      icon: 'hashtag',
+      title: 'Explore',
+      active: false,
+      handleClick: undefined,
+    },
+    {
+      icon: 'notifications',
+      title: 'Notifications',
+      active: false,
+      handleClick: undefined,
+    },
+    {
+      icon: 'bookmarks',
+      title: 'Bookmarks',
+      active: false,
+      handleClick: undefined,
+    },
+    {
+      icon: 'lists',
+      title: 'Lists',
+      active: false,
+      handleClick: undefined,
+    },
+    {
+      icon: 'profile',
+      title: 'Profile',
+      active: false,
+      handleClick: undefined,
+    },
+    {
+      icon: 'profile',
+      title: 'Logout',
+      active: false,
+      handleClick: () => logout(),
+    },
+  ];
+};
 
 const SidePanelLeft = () => {
   const classes = useStyles();
+  const buttons = useButtons();
 
   return (
     <div className={classes.container}>
       <SidePanelLeftButton icon="twitter" active />
-      {buttons.map(i => <SidePanelLeftButton title={i.title} icon={i.icon} active={i.active} />)}
+      {buttons.map(i =>
+        <SidePanelLeftButton
+          title={i.title}
+          icon={i.icon}
+          active={i.active}
+          handleClick={i.handleClick}
+        />
+      )}
     </div>
   );
 };
