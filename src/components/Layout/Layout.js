@@ -6,32 +6,35 @@ import SidePanelRight from '../SidePanelRight/SidePanelRight';
 
 const useStyles = makeStyles(theme => ({
   container: {
-    padding: '0 300px',
-    height: '100vh',
+    // padding: '0 300px',
+    // height: '',
     position: 'relative',
-    [theme.breakpoints.down('md')]: {
-      padding: '0 50px',
-      height: '100vh',
-      position: 'relative',
-    },
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   leftPanel: {
-    height: '80vh',
+    // height: '80vh',
     width: '270px',
-    position: 'fixed',
-    left: '300px',
-    [theme.breakpoints.down('md')]: {
-      height: '80vh',
-      width: '70px',
-      position: 'fixed',
-      left: '50px',
-    },
+    position: '-webkit-sticky',
+    position: 'sticky',
+    alignSelf: 'flex-start',
+    top: 0,
+    // [theme.breakpoints.down('md')]: {
+    //   height: '80vh',
+    //   width: '70px',
+    //   position: 'fixed',
+    //   left: '50px',
+    // },
   },
   rightPanel: {
-    height: '80vh',
+    alignSelf: 'flex-start',
+    // height: '80vh',
+    position: 'sticky',
+    top: 0,
     width: '380px',
-    position: 'fixed',
-    right: '300px',
+    // position: 'fixed',
+    // right: '300px',
     [theme.breakpoints.down('md')]: {
       height: '80vh',
       width: '380px',
@@ -42,14 +45,25 @@ const useStyles = makeStyles(theme => ({
       display: 'none',
     },
   },
+  midContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '600px',
+  },
   topHeader: {
     border: '1px solid rgb(230, 236, 240)',
     backgroundColor: '#FFF',
     height: '54px',
-    width: 'calc(100vw - 600px - 270px - 380px - 2px)',
-    position: 'fixed',
-    left: '570px',
+    // width: 'calc(100vw - 600px - 270px - 380px - 2px)',
+    width: 'calc(100% - 2px)',
+    position: 'sticky',
     top: 0,
+    // position: 'fixed',
+    // left: '570px',
+    // top: 0,
+    // position: 'relative',
+    // top: 0,
+    left: '-50px',
     zIndex: 2,
     display: 'flex',
     justifyContent: 'space-between',
@@ -69,10 +83,11 @@ const useStyles = makeStyles(theme => ({
     },
   },
   pageContent: {
-    paddingTop: '55px',
-    position: 'absolute',
-    left: '570px',
-    width: 'calc(100vw - 600px - 270px - 380px)',
+    // paddingTop: '55px',
+    // position: 'absolute',
+    // left: '570px',
+    // width: 'calc(100vw - 600px - 270px - 380px)',
+    width: '100%',
     [theme.breakpoints.down('md')]: {
       width: 'calc(100vw - 100px - 70px - 380px)',
       left: '120px',
@@ -92,14 +107,16 @@ const Layout = (props) => {
       <div className={classes.leftPanel}>
         <SidePanelLeft />
       </div>
+      <div className={classes.midContent}>
+        <div className={classes.topHeader}>
+          <h1>Home</h1>
+        </div>
+        <div className={classes.pageContent}>
+          {props.children}
+        </div>
+      </div>
       <div className={classes.rightPanel}>
         <SidePanelRight />
-      </div>
-      <div className={classes.topHeader}>
-        <h1>Home</h1>
-      </div>
-      <div className={classes.pageContent}>
-        {props.children}
       </div>
     </Container>
   );
