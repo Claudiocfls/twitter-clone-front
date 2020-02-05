@@ -19,7 +19,7 @@ const iconsList = {
   profile: <FaRegUserCircle size={26} />,
 };
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   button: {
     border: 'none',
     cursor: 'pointer',
@@ -44,7 +44,12 @@ const useStyles = makeStyles({
   active: {
     color: 'rgba(29, 161, 242)',
   },
-});
+  title: {
+    [theme.breakpoints.down('md')]: {
+      display: 'none',
+    },
+  },
+}));
 
 const SidePanelLeftButton = (props) => {
   const { icon, title, active, handleClick } = props;
@@ -58,7 +63,7 @@ const SidePanelLeftButton = (props) => {
       onClick={handleClick}
     >
       {iconsList[icon]}
-      {title && <h4>{title}</h4>}
+      {title && <h4 className={classes.title}>{title}</h4>}
     </div>
   );
 };
