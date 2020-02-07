@@ -66,8 +66,9 @@ const SidePanelLeft = () => {
   return (
     <div className={classes.container}>
       <SidePanelLeftButton icon="twitter" active />
-      {buttons.map(i =>
+      {buttons.map((i, index) =>
         <SidePanelLeftButton
+          key={`left-panel-button-${index}`}
           title={i.title}
           icon={i.icon}
           active={i.active}
