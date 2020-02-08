@@ -54,7 +54,7 @@ const useButtons = () => {
       icon: 'profile',
       title: 'Logout',
       active: false,
-      handleClick: () => logout(),
+      handleClick: () => { sessionStorage.clear(); logout(); },
     },
   ];
 };
