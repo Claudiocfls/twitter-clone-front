@@ -2,7 +2,7 @@ import socket from 'socket.io-client';
 
 class Socket {
   constructor() {
-    this.io = socket('http://localhost:3001');
+    this.io = socket(process.env.REACT_APP_AUTH0_API_BASE_URL);
     this.tweetCallbacks = [];
     this.likeCallbacks = [];
 
