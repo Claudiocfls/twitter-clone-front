@@ -20,16 +20,17 @@ const useStyles = makeStyles({
   header: {
     '& h3':{
       margin: 0,
+      fontSize: '15px',
     },
     '& h4': {
       margin: 0,
+      marginLeft: '8px',
       color: 'rgb(101, 119, 134)',
       fontSize: '15px',
       fontWeight: 400,
     },
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
     '& > *': {
       marginRight: '8px',
     },
@@ -88,8 +89,8 @@ const Tweet = ({ author, content, tweetId, likes, createdAt }) => {
       </div>
       <div className={classes.tweetContent}>
         <div className={classes.header}>
-          <h3>{author || 'nome'}</h3>
-          <h4>{" @claudio"}</h4>
+          <h3>{author.name || 'nome'}</h3>
+          <h4>{`@${author.username}` || "@claudio"}</h4>
           <h4>{` · ${periodSinceCreation}`}</h4>
         </div>
         <div className={classes.content}>
