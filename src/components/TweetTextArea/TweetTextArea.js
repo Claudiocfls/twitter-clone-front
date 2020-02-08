@@ -54,15 +54,19 @@ const TweetTextArea = () => {
   const handleClick = async () => {
     if (disabled) return;
 
-    const { data: newTweet } = await api.post('/tweets', {
-      author: 'Eunofront',
-      content: tweet,
-    });
+    const axiosOptions = {
+      headers:{
+        Authorization: `Bearer ${sessionStorage.getItem('twitter-clone-token')}`
+      },
+    };
 
-    console.log(newTweet);
+    setDisabled(true);
+    await api.post('/tweets',{
+      author: 'DefaultName',
+      content: tweet,
+    }, axiosOptions);
 
     setTweet('');
-    setDisabled(true);
   };
 
   return (
