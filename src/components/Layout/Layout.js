@@ -13,7 +13,6 @@ const useStyles = makeStyles(theme => ({
   },
   leftPanel: {
     width: '270px',
-    position: '-webkit-sticky',
     position: 'sticky',
     alignSelf: 'flex-start',
     top: 0,
